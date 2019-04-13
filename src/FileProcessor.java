@@ -20,23 +20,23 @@ public class FileProcessor {
             do {
                 i = fin.read();
                 if ( i != -1 ) {
-                    int count = 0;
+
                     char reader = (char)(i);
 
                     if (Character.isLetter(reader)){
                      word.append(reader);
-                     count++;
+
                     }
 
-                    if (reader=='\'') {
-                        char temp =(char)fin.read();
-                        if (Character.isLetter(temp)) {
-                            word.append('\'');
-                            word.append(temp);
+
+                    if (!(Character.isLetter(reader))||(Character.isWhitespace(reader))){
+                        if (reader=='\'') {
+                            char temp =(char)fin.read();
+                            if (Character.isLetter(temp)) {
+                                word.append('\'');
+                                word.append(temp);
+                            }
                         }
-                    }
-                    if (!(Character.isLetter(reader))){
-                      break;
                     }
 
                 }
