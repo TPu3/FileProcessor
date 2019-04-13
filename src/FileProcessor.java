@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 public class FileProcessor {
@@ -41,6 +43,7 @@ public class FileProcessor {
 
                 }
             } while ( i != - 1 );
+
             } catch (IOException e) {
             System.out.println(e.getMessage());
         } try{
@@ -50,13 +53,27 @@ public class FileProcessor {
       return word.toString();
     }
 
-   // private static void writeFile (ArrayList<>)
+    private static void writeFile (ArrayList<String> list) {
+        //Arrays.sort(list.toArray());
+        Collections.sort(list);
+        for (String coun: list
+             ) {
+            System.out.println(coun);
+            
+        }
+    }
 
     public static void main(String[] args) {
       ArrayList <String> list = new ArrayList<>();
+
       String word = readWord(args[0]);
-      if (list.indexOf(word)==-1) {
-          list.add(word);
-      }
+        while (true) {
+            if (list.indexOf(word) == -1) {
+                list.add(word);
+            }
+        }
+
+     // writeFile(list);
+
     }
 }
