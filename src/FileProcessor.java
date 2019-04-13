@@ -47,4 +47,9 @@ public class FileProcessor {
       return words;
     }
 
+   // private static void writeFile (ArrayList<>)
+
+    public static void main(String[] args) {
+        readFile(args[0]);
+    }
 }
