@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 
 public class FileProcessor {
-    private static ArrayList<String> readFile(String fileName ){
+    private static String readWord(String fileName ){
         FileInputStream fin= null;
         int i;
         StringBuilder word = new StringBuilder();
-        ArrayList<String> words=null;
+
         try {
             fin = new FileInputStream(fileName);
         }catch (FileNotFoundException e) {
@@ -22,18 +22,21 @@ public class FileProcessor {
                 if ( i != -1 ) {
                     int count = 0;
                     char reader = (char)(i);
+
                     if (Character.isLetter(reader)){
                      word.append(reader);
                      count++;
                     }
+
                     if (reader=='\'') {
                         char temp =(char)fin.read();
                         if (Character.isLetter(temp)) {
                             word.append('\'');
+                            word.append(temp);
                         }
                     }
-                    if ((Character.isSpaceChar(reader))&&(count>0)){
-                        words.add(word.toString().toLowerCase());
+                    if (!(Character.isLetter(reader))){
+                      break;
                     }
 
                 }
@@ -44,12 +47,12 @@ public class FileProcessor {
         fin.close();} catch (IOException e) {
             System.out.println(e.getMessage());
         }
-      return words;
+      return word.toString();
     }
 
    // private static void writeFile (ArrayList<>)
 
     public static void main(String[] args) {
-        readFile(args[0]);
+        System.out.println(  readWord(args[0]));
     }
 }
