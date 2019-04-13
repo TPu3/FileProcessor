@@ -36,7 +36,7 @@ public class FileProcessor {
                                 word.append('\'');
                                 word.append(temp);
                             }
-                        }
+                        } else break;
                     }
 
                 }
@@ -53,6 +53,10 @@ public class FileProcessor {
    // private static void writeFile (ArrayList<>)
 
     public static void main(String[] args) {
-        System.out.println(  readWord(args[0]));
+      ArrayList <String> list = new ArrayList<>();
+      String word = readWord(args[0]);
+      if (list.indexOf(word)==-1) {
+          list.add(word);
+      }
     }
 }
