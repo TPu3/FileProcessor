@@ -69,12 +69,21 @@ public class FileProcessor {
 
 
 
-    private static void writeFile (String [] ar, String name) {
+    private static void writeFile (ArrayList<String> ar, String name) {
         FileOutputStream fout = null;
         try {
             fout = new FileOutputStream(name);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
+        }
+        for (String row: ar
+             ) { byte[] buf = row.getBytes();
+               try{ fout.write(buf);
+                    fout.write('\n');}
+               catch (IOException e) {
+                   System.out.println(e.getMessage());
+               }
+
         }
 
     }
@@ -87,6 +96,6 @@ public class FileProcessor {
             System.out.println(coun);
 
         }
-
+        writeFile(list,"OUTPUT.TXT");
     }
 }
