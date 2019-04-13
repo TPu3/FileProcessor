@@ -49,7 +49,7 @@ public class FileProcessor {
                     }
                 }
             } while ( i != - 1 );
-            if ((words.indexOf(word.toString().toLowerCase())) == -1) {
+            if ((words.contains(word.toString().toLowerCase())) ) {
                 words.add(word.toString().toLowerCase());
             }
             word.delete(0, word.length());
