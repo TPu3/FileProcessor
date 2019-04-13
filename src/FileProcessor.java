@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class FileProcessor {
@@ -44,15 +45,18 @@ public class FileProcessor {
                             }
                         } else {
                             // System.out.println(word.toString());
-                            if ((words.indexOf(word.toString().toLowerCase())) == -1) {
+                            if (((words.indexOf(word.toString().toLowerCase())) == -1)&&(word.length()>0)) {
                                 words.add(word.toString().toLowerCase());
-                                word.delete(0, word.length());
                             }
+                            word.delete(0, word.length());
                         }
                     }
                 }
             } while ( i != - 1 );
-            words.add(word.toString().toLowerCase());
+            if ((words.indexOf(word.toString().toLowerCase())) == -1) {
+                words.add(word.toString().toLowerCase());
+            }
+            word.delete(0, word.length());
             } catch (IOException e) {
             System.out.println(e.getMessage());
         } try{
@@ -75,7 +79,13 @@ public class FileProcessor {
     }
 
     public static void main(String[] args) {
+        ArrayList<String> list =readFile(args[0]);
+        Collections.sort(list);
+        for (String coun: list
+             ) {
+            System.out.println(coun);
 
-       Arrays.sort(readFile(args[0]).toArray());
+        }
+
     }
 }
