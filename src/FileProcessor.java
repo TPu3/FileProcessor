@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class FileProcessor {
@@ -16,7 +17,7 @@ public class FileProcessor {
         FileInputStream fin= null;
         int i;
         StringBuilder word = new StringBuilder();
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<String> words = new ArrayList<>();
         try {
             fin = new FileInputStream(fileName);
         }catch (FileNotFoundException e) {
@@ -26,19 +27,11 @@ public class FileProcessor {
             do {
                 i = fin.read();
                 if ( i != -1 ) {
-
                     char reader = (char)(i);
                     if (Character.isLetter(reader)){
                      word.append(reader);
-
                     }
-                   /* if (reader=='\'') {
-                        i =(char)fin.read();
-                        if (Character.isLetter(i)) {
-                            word.append('\'');
-                           // word.append(temp);
-                        }
-                    }*/
+
                     if ((Character.isSpaceChar(reader))||!(Character.isLetter(reader))) {
                         if (reader == '\'') {
                             char temp = (char) fin.read();
@@ -47,7 +40,7 @@ public class FileProcessor {
                                 word.append(temp);
                             }
                         } else {
-                            // System.out.println(word.toString());
+
                             if (((words.indexOf(word.toString().toLowerCase())) == -1)&&(word.length()>0)) {
                                 words.add(word.toString().toLowerCase());
                             }
