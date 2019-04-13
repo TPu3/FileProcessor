@@ -30,6 +30,7 @@ public class FileProcessor {
                         char temp =(char)fin.read();
                         if (Character.isLetter(temp)) {
                             word.append('\'');
+                            word.append(temp);
                         }
                     }
                     if ((Character.isSpaceChar(reader))&&(count>0)){
